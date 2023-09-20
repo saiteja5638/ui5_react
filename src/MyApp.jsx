@@ -38,7 +38,8 @@ const tableData = new Array(500).fill(null).map((_, index) => {
 
   let list_data = new Array(20).fill(null).map((_,index)=>{
     return {
-        name:`name${index}`
+        name:`name${index}`,
+        per:Math.floor(Math.random()*100)
     }
   })
  
@@ -151,46 +152,25 @@ export function MyApp() {
             <CardHeader titleText="Progress" subtitleText="List" avatar={<Icon name={listIcon} ></Icon>} >
 
             </CardHeader>
-        } style={{width:"300px"}}  >
+        } style={{width:"300px",height:"50%"}}  >
         <List    style={{ height: '300px', overflow: 'auto' } }>
         {list_data.map((item) => (
-        <StandardListItem >
-          {item.name}
-        </StandardListItem>
-      ))}
 
-            {/* <StandardListItem additionalText="finished" additionalTextState={ValueState.Success}  >Activity 1</StandardListItem>
-            <StandardListItem additionalText="Error"  additionalTextState={ValueState.Error} >Activity 2</StandardListItem> */}
-            {/* <CustomListItem>
-                    <FlexBox
-                        direction={FlexBoxDirection.Column}
-                        style={{ width: "100%", ...spacing.sapUiContentPadding }}
-                    >
-                        <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween}>
-                            <Text style={{ fontSize: ThemingParameters.sapFontLargeSize }}>
-                                Activity 3
-                            </Text>
-                            <Text style={{ color: ThemingParameters.sapCriticalTextColor }}>
-                                in progress
-                            </Text>
-                        </FlexBox>
-                        <ProgressIndicator
-                            value={89}
-                            valueState={ValueState.Success}
-                            style={{ ...spacing.sapUiTinyMarginTop }}
-                        />
-                    </FlexBox>
-            </CustomListItem>
+ 
+
+
+
                 <CustomListItem>
                     <FlexBox direction={FlexBoxDirection.Column}   style={{ width: "100%", ...spacing.sapUiContentPadding }}  >
                         <FlexBox justifyContent={FlexBoxJustifyContent.SpaceBetween} >
-                            <Text style={{ fontSize: ThemingParameters.sapFontLargeSize }} >Activity 4</Text>
+                            <Text style={{ fontSize: ThemingParameters.sapFontLargeSize }} >{item.name}</Text>
                             <Text style={{ color: ThemingParameters.sapCriticalTextColor }} >in Progress</Text>
                         </FlexBox>
-                        <ProgressIndicator value={12}  valueState={ValueState.Error} />
+                        <ProgressIndicator value={item.per}  valueState={ValueState.Error} />
                     </FlexBox>
                   
-                </CustomListItem> */}
+                </CustomListItem>
+                     ))}
         </List> 
         </Card>
         <Card    header={<CardHeader titleText="Analytical Table" avatar={<Icon  name={tableViewIcon} />} ></CardHeader>}  style={{width:"700px",margin:"50px",height:"50%"}}  > 
